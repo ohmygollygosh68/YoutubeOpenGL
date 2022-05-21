@@ -83,10 +83,9 @@ int main()
 	// Vertices coordinates
 	GLfloat vertices[] =
 	{
-		-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower left corner
-		// 0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower right corner
-		0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower right corner. Exercise 1.1 Change the equilateral triangle to a right triangle
-		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f // Upper corner
+		-0.5f, -0.5f, 0.0f, // Lower left corner
+		0.5f, -0.5f, 0.0f, // Lower right corner. Exercise 1.1 Change the equilateral triangle to a right triangle
+		-0.5f, 0.5f, 0.0f // Upper corner
 	};
 
 	// Create reference containers for the Vartex Array Object and the Vertex Buffer Object
@@ -127,7 +126,8 @@ int main()
 		// Bind the VAO so OpenGL knows to use it
 		glBindVertexArray(VAO);
 		// Draw the triangle using the GL_TRIANGLES primitive
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_POINTS, 0, 3); // Exercise 1.2 Draw points instead of Triangles
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events
