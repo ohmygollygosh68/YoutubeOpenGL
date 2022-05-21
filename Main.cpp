@@ -2,6 +2,12 @@
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 
+// Exercise 1 Easy Difficulty
+// 1.1 Change color of the window to a shade of orange.
+// 
+// I will use https://doc.instantreality.org/tools/color_calculator/
+
+
 int main()
 {
 	// Initialize GLFW
@@ -42,7 +48,9 @@ int main()
 
 
 	// Specify the color of the background
-	glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
+	//glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
+	// glClearColor(0.89f, 0.67f, 0.22f, 1.0f); // My solution. Works just fine. Its just a lighter shade of orange.
+	glClearColor(1.0f, 0.37f, 0.07f, 1.0f); // Gordons solution.
 	// Clean the back buffer and assign the new color to it
 	glClear(GL_COLOR_BUFFER_BIT);
 	// Swap the back buffer with the front buffer
