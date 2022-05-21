@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "YoutubeOpenGL", "YoutubeOpenGL.vcxproj", "{44568EB3-EED2-4C23-829C-F29212D9412C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44568EB3-EED2-4C23-829C-F29212D9412C}.Debug|x64.ActiveCfg = Debug|x64
+		{44568EB3-EED2-4C23-829C-F29212D9412C}.Debug|x64.Build.0 = Debug|x64
+		{44568EB3-EED2-4C23-829C-F29212D9412C}.Debug|x86.ActiveCfg = Debug|Win32
+		{44568EB3-EED2-4C23-829C-F29212D9412C}.Debug|x86.Build.0 = Debug|Win32
+		{44568EB3-EED2-4C23-829C-F29212D9412C}.Release|x64.ActiveCfg = Release|x64
+		{44568EB3-EED2-4C23-829C-F29212D9412C}.Release|x64.Build.0 = Release|x64
+		{44568EB3-EED2-4C23-829C-F29212D9412C}.Release|x86.ActiveCfg = Release|Win32
+		{44568EB3-EED2-4C23-829C-F29212D9412C}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {386FFE85-BDAC-442B-B4C4-1278DD4058B8}
+	EndGlobalSection
+EndGlobal
