@@ -2,6 +2,9 @@
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 
+// Exercise 2.2 Change VAO and VBO into VAOs and VBOs, and make them into arrays of size 1 
+// Hint: there are multiple places you need to modify
+// 
 // Vertex Shader source code
 const char* vertexShaderSource = "#version 330 core\n"
 "layout (location = 0) in vec3 aPos;\n"
@@ -96,17 +99,17 @@ int main()
 	};
 
 	// Create reference containers for the Vartex Array Object and the Vertex Buffer Object
-	GLuint VAO, VBO;
+	GLuint VAOs[1], VBOs[1];
 
 	// Generate the VAO and VBO with only 1 object each
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	glGenVertexArrays(1, VAOs);
+	glGenBuffers(1, VBOs);
 
 	// Make the VAO the current Vertex Array Object by binding it
-	glBindVertexArray(VAO);
+	glBindVertexArray(VAOs[0]);
 
 	// Bind the VBO specifying it's a GL_ARRAY_BUFFER
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	glBindBuffer(GL_ARRAY_BUFFER, VBOs[0]);
 	// Introduce the vertices into the VBO
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
@@ -117,10 +120,14 @@ int main()
 
 	// Bind both the VBO and VAO to 0 so that we don't accidentally modify the VAO and VBO we created
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
 
 
 
+
+
+
+
+	glBindVertexArray(VAOs[0]);
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -131,7 +138,7 @@ int main()
 		// Tell OpenGL which Shader Program we want to use
 		glUseProgram(shaderProgram);
 		// Bind the VAO so OpenGL knows to use it
-		glBindVertexArray(VAO);
+		glBindVertexArray(VAOs[0]);
 		// Draw the triangle using the GL_TRIANGLES primitive
 		//glDrawArrays(GL_TRIANGLES, 0, 3);
 		glDrawArrays(GL_TRIANGLES, 0, 6); // Exercise 2.1 Draw a Square formed from two triangles
@@ -144,8 +151,8 @@ int main()
 
 
 	// Delete all the objects we've created
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
+	glDeleteVertexArrays(1, VAOs);
+	glDeleteBuffers(1, VBOs);
 	glDeleteProgram(shaderProgram);
 	// Delete window before ending the program
 	glfwDestroyWindow(window);
