@@ -54,7 +54,6 @@ int main()
 	glViewport(0, 0, 800, 800);
 
 
-
 	// Create Vertex Shader Object and get its reference
 	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 	// Attach Vertex Shader source to the Vertex Shader Object
@@ -81,21 +80,13 @@ int main()
 	glDeleteShader(vertexShader);
 	glDeleteShader(fragmentShader);
 
-
-
 	// Vertices coordinates
 	GLfloat vertices[] =
 	{
-
-		// Exercise 2.1 Draw a Square Hint: add three more vertices and don’t forget about glDrawArrays
-		// Gordon made two triangles in the shape of a square. Three vertices each. 
-
-		-0.5f, -0.5f, 0.0f, // Lower left corner
-		0.5f, -0.5f, 0.0f, // Lower right corner
-		-0.5f, 0.5f, 0.0f, // Upper left corner
-		-0.5f, 0.5f, 0.0f, // Upper left corner. Same as above vertices
-		0.5f, 0.5f, 0.0f, // Upper right corner
-		0.5f, -0.5f, 0.0f, // Lower right corner. Same as the 2nd vertices
+		-0.5f, -0.5f, // Lower left corner    Exercise 3.1 Draw Square outline using GL_LINE_LOOP and 2D coordinates
+		-0.5f, 0.5f, // Upper left corner
+		0.5f,0.5f, // Upper right corner
+		0.5, -0.5f, // Lower right corner
 	};
 
 	// Create reference containers for the Vartex Array Object and the Vertex Buffer Object
@@ -114,17 +105,12 @@ int main()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 	// Configure the Vertex Attribute so that OpenGL knows how to read the VBO
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0); // Exercise 3.1
 	// Enable the Vertex Attribute so that OpenGL knows to use it
 	glEnableVertexAttribArray(0);
 
 	// Bind both the VBO and VAO to 0 so that we don't accidentally modify the VAO and VBO we created
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-
-
-
-
 
 
 	glBindVertexArray(VAOs[0]);
@@ -141,7 +127,7 @@ int main()
 		glBindVertexArray(VAOs[0]);
 		// Draw the triangle using the GL_TRIANGLES primitive
 		//glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDrawArrays(GL_TRIANGLES, 0, 6); // Exercise 2.1 Draw a Square formed from two triangles
+		glDrawArrays(GL_LINE_LOOP, 0, 4); // Exercise 3.1
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events
