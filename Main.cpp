@@ -3,8 +3,8 @@
 #include<GLFW/glfw3.h>
 
 // Exercise 1 Easy Difficulty
-// 1.2 Change the size of the window to width = 400, height = 225
-// Hint: you need to change both the window itself, and the OpenGL viewport.
+// 1.3 Change the name of the window to ”I made this!”
+// Hint: Hint: check the window creation function.
 // 
 
 
@@ -27,7 +27,7 @@ int main()
 
 
 	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-	GLFWwindow* window = glfwCreateWindow(400, 225, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(400, 225, "I made this", NULL, NULL);
 	// Error check if the window fails to create
 	if (window == NULL)
 	{
