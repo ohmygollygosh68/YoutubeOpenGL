@@ -2,13 +2,6 @@
 #include<glad/glad.h>
 #include<GLFW/glfw3.h>
 
-// Exercise 1 Easy Difficulty
-// 1.3 Change the name of the window to ”I made this!”
-// Hint: Hint: check the window creation function.
-// 
-
-
-
 int main()
 {
 	// Initialize GLFW
@@ -27,7 +20,7 @@ int main()
 
 
 	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-	GLFWwindow* window = glfwCreateWindow(400, 225, "I made this", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 800, "YoutubeOpenGL", NULL, NULL);
 	// Error check if the window fails to create
 	if (window == NULL)
 	{
@@ -44,7 +37,7 @@ int main()
 	gladLoadGL();
 	// Specify the viewport of OpenGL in the Window
 	// In this case the viewport goes from x = 0, y = 0, to x = 800, y = 800
-	glViewport(0, 0, 400, 225);
+	glViewport(0, 0, 800, 800);
 
 
 
