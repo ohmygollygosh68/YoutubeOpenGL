@@ -83,20 +83,17 @@ int main()
 	// Vertices coordinates
 	GLfloat vertices[] =
 	{
-		-0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower left corner
-		0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f, // Lower right corner
-		0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f, // Upper corner
-		-0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f, // Inner left
-		0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f, // Inner right
-		0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f // Inner down
+		-0.5f, -0.5f, 0.0f, // Upper left corner    Indices number 0
+		-0.5f, 0.5, 0.0f, // Upper left corner   Indices number 1
+		0.5f, 0.5f, 0.0f, // Upper right corner   Indices number 2
+		0.5f, -0.5f, 0.0f, // Lower right corner   Indices number 3
 	};
 
 	// Indices for vertices order
 	GLuint indices[] =
 	{
-		0, 3, 5, // Lower left triangle
-		3, 2, 4, // Lower right triangle
-		5, 4, 1 // Upper triangle
+		0, 1, 2, // Upper left Triangle
+		2, 3, 0, // Lower right triangle. glDrawElements will need to know of 6 indices
 	};
 
 	// Create reference containers for the Vartex Array Object, the Vertex Buffer Object, and the Element Buffer Object
@@ -147,7 +144,7 @@ int main()
 		// Bind the VAO so OpenGL knows to use it
 		glBindVertexArray(VAO);
 		// Draw primitives, number of indices, datatype of indices, index of indices
-		glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); // < ----- ****  Exercise 1.1 changed from 9 indices to 6 ****
 		// Swap the back buffer with the front buffer
 		glfwSwapBuffers(window);
 		// Take care of all GLFW events
