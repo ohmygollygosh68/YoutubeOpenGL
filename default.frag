@@ -10,5 +10,9 @@ in vec3 color;
 
 void main()
 {
-	FragColor = vec4(color, 1.0f);
+
+// Exercise 1.2 Invert the colors of the triangles
+// Hint: The inverse of an RGB normalised color, is 1- that color
+
+	FragColor = vec4(1.0f - color.x, 1.0f - color.y, 1.0f - color.z, 1.0f);
 }
