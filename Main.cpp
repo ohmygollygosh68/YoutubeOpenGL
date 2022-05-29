@@ -87,8 +87,10 @@ int main()
 
 	// Gets ID of uniform called "scale"
 	GLuint uniID = glGetUniformLocation(shaderProgram.ID, "scale");
-
-
+	// Exercise 3.1 Make the triangle pulsate. The time of the last tick
+	float lastTime = 0.0f;
+	// added scale for triangle
+	float scale = 0.0f;
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
 	{
@@ -98,8 +100,14 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 		// Tell OpenGL which Shader Program we want to use
 		shaderProgram.Activate();
-		// Assigns a value to the uniform; NOTE: Must always be done after activating the Shader Program
-		glUniform1f(uniID, 0.5f);
+		// Changes "scale" regularly
+		if (glfwGetTime() - lastTime > 1.0f / 60.0f)
+		{
+			scale += 0.05f;
+			lastTime = glfwGetTime();	
+		}
+		// Updates uniform value
+		glUniform1f(uniID, 1.0f * sin(scale));
 		// Bind the VAO so OpenGL knows to use it
 		VAO1.Bind();
 		// Draw primitives, number of indices, datatype of indices, index of indices
