@@ -13,6 +13,9 @@
 #include"EBO.h"
 
 
+const unsigned int width = 800;
+const unsigned int height = 800;
+
 
 // Vertices coordinates
 GLfloat vertices[] =
@@ -46,7 +49,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// Create a GLFWwindow object of 800 by 800 pixels, naming it "YoutubeOpenGL"
-	GLFWwindow* window = glfwCreateWindow(800, 800, "YoutubeOpenGL", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(width, height, "YoutubeOpenGL", NULL, NULL);
 	// Error check if the window fails to create
 	if (window == NULL)
 	{
@@ -61,7 +64,7 @@ int main()
 	gladLoadGL();
 	// Specify the viewport of OpenGL in the Window
 	// In this case the viewport goes from x = 0, y = 0, to x = 800, y = 800
-	glViewport(0, 0, 800, 800);
+	glViewport(0, 0, width, height);
 
 
 
@@ -91,17 +94,9 @@ int main()
 	// Gets ID of uniform called "scale"
 	GLuint uniID = glGetUniformLocation(shaderProgram.ID, "scale");
 
-
-
-
-
-
-
 	// Original code from the tutorial
 	Texture popCat("pop_cat.png", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
 	popCat.texUnit(shaderProgram, "tex0", 0);
-
-
 
 	// Main while loop
 	while (!glfwWindowShouldClose(window))
@@ -112,6 +107,21 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT);
 		// Tell OpenGL which Shader Program we want to use
 		shaderProgram.Activate();
+
+		glm::mat4 model = glm::mat4(1.0f);
+		glm::mat4 view = glm::mat4(1.0f);
+		glm::mat4 proj = glm::mat4(1.0f);
+		view = glm::translate(view, glm::vec3(0.0f, -0.5f, -2.0f));
+		proj = glm::perspective(glm::radians(45.0f), (float)(width / height), 0.1f, 100.0f);
+
+
+		int modelLoc = glGetUniformLocation(shaderProgram.ID, "model");
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		int viewLoc = glGetUniformLocation(shaderProgram.ID, "view");
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+		int projLoc = glGetUniformLocation(shaderProgram.ID, "proj");
+		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(proj));
+
 		// Assigns a value to the uniform; NOTE: Must always be done after activating the Shader Program
 		glUniform1f(uniID, 0.5f);
 		// Binds texture so that is appears in rendering
