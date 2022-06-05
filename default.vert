@@ -1,10 +1,10 @@
 #version 330 core
 
-//Positions/Coordinates
+// Positions/Coordinates
 layout (location = 0) in vec3 aPos;
 // Colors
 layout (location = 1) in vec3 aColor;
-// Texture coordinates
+// Texture Coordinates
 layout (location = 2) in vec2 aTex;
 
 
@@ -13,20 +13,16 @@ out vec3 color;
 // Outputs the texture coordinates to the fragment shader
 out vec2 texCoord;
 
-// Controls the scale of the vertices
-uniform float scale;
-
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 proj;
+// Imports the camera matrix from the main function
+uniform mat4 camMatrix;
 
 
 void main()
 {
 	// Outputs the positions/coordinates of all vertices
-	gl_Position = proj * view * model * vec4(aPos, 1.0);
+	gl_Position = camMatrix * vec4(aPos, 1.0);
 	// Assigns the colors from the Vertex Data to "color"
 	color = aColor;
-	// Assign the texture coordinates from the vertex Data to "texCoord"
+	// Assigns the texture coordinates from the Vertex Data to "texCoord"
 	texCoord = aTex;
 }
